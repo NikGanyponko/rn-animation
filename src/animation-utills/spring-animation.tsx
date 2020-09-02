@@ -14,9 +14,9 @@ import {
   stopClock,
   spring,
   greaterOrEq,
-  call
-} from "react-native-reanimated";
-import { State } from "react-native-gesture-handler";
+  call,
+} from 'react-native-reanimated';
+import { State } from 'react-native-gesture-handler';
 
 const withSpring = (
   value,
@@ -25,7 +25,7 @@ const withSpring = (
   offset,
   snapPoint,
   onSwipedRatio,
-  onSwiped
+  onSwiped,
 ) => {
   const clock = new Clock();
 
@@ -33,7 +33,7 @@ const withSpring = (
     finished: new Value(0),
     velocity: new Value(0),
     position: new Value(0),
-    time: new Value(0)
+    time: new Value(0),
   };
 
   const config = {
@@ -43,7 +43,7 @@ const withSpring = (
     overshootClamping: false,
     restSpeedThreshold: 0.001,
     restDisplacementThreshold: 0.001,
-    toValue: snapPoint
+    toValue: snapPoint,
   };
 
   const onSwipe =
@@ -54,35 +54,35 @@ const withSpring = (
   return block([
     cond(and(eq(state, State.BEGAN), clockRunning(clock)), [
       set(offset, springState.position),
-      stopClock(clock)
+      stopClock(clock),
     ]),
 
     cond(neq(state, State.END), [
       set(springState.finished, 0),
-      set(springState.position, add(offset, value))
+      set(springState.position, add(offset, value)),
     ]),
 
     cond(eq(state, State.END), [
       cond(and(not(clockRunning(clock)), not(springState.finished)), [
         set(springState.velocity, velocity),
         set(springState.time, 0),
-        startClock(clock)
+        startClock(clock),
       ]),
 
       spring(clock, springState, config),
       cond(
         and(
           clockRunning(clock),
-          greaterOrEq(springState.position, new Value(50))
+          greaterOrEq(springState.position, new Value(50)),
         ),
-        call([springState.position], onSwiped)
+        call([springState.position], onSwiped),
       ),
       cond(springState.finished, [
         set(offset, springState.position),
-        stopClock(clock)
-      ])
+        stopClock(clock),
+      ]),
     ]),
-    springState.position
+    springState.position,
   ]);
 };
 

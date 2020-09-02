@@ -36,7 +36,7 @@ const card = [
 
 const styles = {
   view: {
-    flex: 1,
+    height: 700,
     justifyContent: 'center',
   },
   overlay: {

@@ -8,7 +8,7 @@ import cardImage from '../assets/card1.png';
 
 const viewStyle = {
   container: {
-    flex: 1,
+    height: 700,
     alignItems: 'center',
     justifyContent: 'space-around',
   },

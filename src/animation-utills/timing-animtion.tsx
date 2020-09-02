@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { State } from "react-native-gesture-handler";
-import Animated, { Easing } from "react-native-reanimated";
+import { useMemo } from 'react';
+import { State } from 'react-native-gesture-handler';
+import Animated, { Easing } from 'react-native-reanimated';
 
 const { Clock, Value, Extrapolate } = Animated;
 const {
@@ -12,7 +12,7 @@ const {
   interpolate,
   cond,
   eq,
-  neq
+  neq,
 } = Animated;
 
 const bin = (value: boolean) => (value ? 1 : 0);
@@ -31,13 +31,13 @@ const runTiming = (value, configAnim) => {
     finished: new Value(0),
     frameTime: new Value(0),
     position: new Value(0),
-    time: new Value(0)
+    time: new Value(0),
   };
   const config = {
     toValue: new Value(0),
     duration: 250,
     easing: Easing.ease,
-    ...configAnim
+    ...configAnim,
   };
   return block([
     startClock(clock),
@@ -45,14 +45,14 @@ const runTiming = (value, configAnim) => {
       set(state.frameTime, 0),
       set(state.time, 0),
       set(state.finished, 0),
-      set(config.toValue, value)
+      set(config.toValue, value),
     ]),
     cond(
       eq(gestureState, State.ACTIVE),
       [set(state.position, value)],
-      timing(clock, state, config)
+      timing(clock, state, config),
     ),
-    state.position
+    state.position,
   ]);
 };
 
