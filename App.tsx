@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import Home from './src/screens/home';
-import FadingScreen from './src/screens/fade';
-import Transition from './src/screens/transition';
-import CardTransition from './src/screens/card-transition';
-import BottomSheetCl from './src/screens/bottom-sheet-cl';
-import PanGestureAnimation from './src/screens/pan-gesture';
-import DecayAnimation from './src/screens/decay-animation';
-import SpringAnimation from './src/screens/spring';
+import {
+  Home,
+  FadingScreen,
+  Transition,
+  CardTransition,
+  BottomSheetCl,
+  PanGestureAnimation,
+  DecayAnimation,
+  SpringAnimation,
+} from './src/screens';
 
 const Stack = createStackNavigator();
 
